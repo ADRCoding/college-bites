@@ -36,3 +36,53 @@
     transform: rotate(360deg);
   }
 }
+driver-customer-buttons {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2vh;
+}
+
+.driver-customer-buttons button {
+    width: 48%;
+    padding: 15px;
+    font-size: 1.25rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent; /* Default border */
+}
+
+.driver-customer-buttons .driver-btn {
+    background-color: #4CAF50; /* Green for Driver */
+    color: white;
+}
+
+.driver-customer-buttons .customer-btn {
+    background-color: #2196F3; /* Blue for Customer */
+    color: white;
+}
+
+.driver-customer-buttons button:hover {
+    opacity: 0.8;
+}
+
+.driver-customer-buttons button:focus {
+    outline: none;
+    border: 2px solid #333; /* Focused border */
+}
+
+.driver-customer-buttons button.active {
+    background-color: #333;
+    color: white;
+}
+
+.driver-customer-buttons .driver-btn.active {
+    background-color: #388E3C; /* Darker green when active */
+}
+
+.driver-customer-buttons .customer-btn.active {
+    background-color: #1976D2; /* Darker blue when active */
+}

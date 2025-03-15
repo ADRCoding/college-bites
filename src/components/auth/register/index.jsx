@@ -15,13 +15,40 @@ const Register = () => {
 
     const { userLoggedIn } = useAuth()
 
+    const [activeRoles, setActiveRoles] = useState({ driver: false, customer: false }); // Allow both to be active
+
     const onSubmit = async (e) => {
         e.preventDefault()
+
+        // Check if at least one role is selected
+        if (!activeRoles.driver && !activeRoles.customer) {
+            setErrorMessage("Please select at least one role: Driver or Customer.");
+            return; // Prevent form submission
+        }
+
+        // Log the roles when signup button is clicked
+        console.log("Roles selected before signup:", activeRoles);
+
         if (!isRegistering) {
             setIsRegistering(true)
             await doCreateUserWithEmailAndPassword(email, password)
         }
     }
+
+    // Toggle active state for "Driver" and "Customer" buttons independently
+    const toggleRole = (role) => {
+        setActiveRoles((prevState) => {
+            const newState = {
+                ...prevState,
+                [role]: !prevState[role],  // Toggle the selected role status
+            };
+
+            // Log the current state of roles after the toggle
+            console.log("Current active roles after toggle:", newState);
+
+            return newState;
+        });
+    };
 
     return (
         <>
@@ -102,10 +129,26 @@ const Register = () => {
                             Already have an account? <Link to={'/login'} className="font-bold hover:underline">Continue</Link>
                         </div>
                     </form>
+
+                    {/* Role Selection Buttons (Driver & Customer) */}
+                    <div className="driver-customer-buttons">
+                        <button
+                            className={`driver-btn ${activeRoles.driver ? 'active' : ''}`}
+                            onClick={() => toggleRole('driver')} // Use the role name as the key
+                        >
+                            Driver
+                        </button>
+                        <button
+                            className={`customer-btn ${activeRoles.customer ? 'active' : ''}`}
+                            onClick={() => toggleRole('customer')} // Use the role name as the key
+                        >
+                            Customer
+                        </button>
+                    </div>
                 </div>
             </div>
         </>
     )
 }
 
-export default Register
+export default Register;
