@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom"; // Added useLocation hook
 import "./checkoutPage.css";
+import "./MenuBar";
+import MenuBar from "./MenuBar";
 
 const CheckoutPage = () => {
   const location = useLocation(); // Retrieve state passed from the previous page
@@ -60,9 +62,9 @@ const CheckoutPage = () => {
 
   return (
     <div className="checkout-container">
+      <MenuBar />
       <form className="checkout-form" onSubmit={handleSubmit}>
         <h2 className="checkout-title">Checkout</h2>
-
         <div className="input-group">
           <input
             type="text"

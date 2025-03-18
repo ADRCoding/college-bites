@@ -3,13 +3,16 @@ import Register from "./components/auth/register/";
 
 import Header from "./components/header";
 
+
 import Information from "./Information";
 import MainWebpage from "./MainWebpage";
 import DriverPortal from "./driverPortal";
 import Map from "./Map";
+
 import CheckoutPage from "./checkoutPage"
 import ConfirmationPage from "./ConfirmationPage";
 import ProductPage from "./ProductPage"
+
 
 import { AuthProvider } from "./contexts/authContext";
 import { useRoutes } from "react-router-dom";
@@ -49,6 +52,7 @@ function App() {
       path: "/find",
       element: <Map />,
     },
+
     {
       path: "/checkout",
       element: <CheckoutPage />
@@ -61,6 +65,7 @@ function App() {
       path: "/products",
       element: <ProductPage />
     },
+
     
   ];
   let routesElement = useRoutes(routesArray);
